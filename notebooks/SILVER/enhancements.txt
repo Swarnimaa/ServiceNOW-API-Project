@@ -1,0 +1,40 @@
+""""
+Real Production Enhancements
+
+In real projects, companies additionally implement:
+
+Delta Live Tables (DLT)
+Expectations and constraints
+Unity Catalog governance
+Great Expectations framework
+Logging framework
+Retry mechanism
+Incremental loading
+CDC processing
+Schema evolution
+Auto Loader
+Quarantine tables
+Metadata-driven pipelines
+Airflow/ADF orchestration
+CI/CD pipelines
+Unit testing
+Monitoring dashboards
+SLA alerts
+Data observability
+
+
+"""
+
+Common Silver Layer Transformations
+Typical Cleaning Done
+Transformation	Example
+Remove duplicates	Latest customer record
+Null handling	Replace missing values
+Standardization	MALE/FEMALE formatting
+Type casting	String to date/int
+Validation	Email/phone checks
+Filtering	Remove corrupt rows
+Enrichment	Add derived columns
+Deduplication	Keep latest version
+Audit columns	Insert timestamps
+Data quality rules	Mandatory checks

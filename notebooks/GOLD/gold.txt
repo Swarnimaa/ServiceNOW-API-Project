@@ -1,0 +1,102 @@
+Example Scenario
+
+We already have Silver tables:
+
+silver.patient_visits
+silver.claims
+silver.providers
+
+Now we create Gold tables like:
+
+Daily patient KPIs
+Revenue KPIs
+Readmission metrics
+Provider performance
+
+
+
+Real Production Enhancements
+
+In real projects, Gold layer pipelines also include:
+
+Feature	                        Purpose
+Incremental                     loading	Process only new records
+Partitioning	                Faster queries
+Z-Ordering	                    Better performance
+Delta Optimization	            Reduce small files
+Unity Catalog	                Governance
+Data Quality Checks	            KPI accuracy
+CI/CD	                        Deployment automation
+Workflow Scheduling	            Daily/hourly refresh
+Audit columns	                Lineage tracking
+
+
+
+OPTIMIZATIONS - 
+
+Partitioning on Business Date
+Large Gold fact tables were partitioned by: YEAR
+
+Applied Z-Ordering
+We optimized Delta tables using:
+OPTIMIZE gold_patient_visits
+ZORDER BY (patient_id, hospital_id)
+
+
+Reduced Power BI Load Time
+
+We:
+
+removed unnecessary technical columns
+exposed only business-required fields
+pre-calculated KPIs
+
+Examples:
+
+average LOS (length of stay)
+readmission %
+claim approval %
+appointment no-show %
+
+👉 Reduced heavy DAX calculations in Power BI.
+
+
+
+Small File Optimization
+
+Because streaming/microbatch jobs created many tiny files:
+we scheduled:
+
+OPTIMIZE gold_claims
+VACUUM gold_claims
+
+
+
+Caching Frequently Accessed Tables
+
+For high-usage KPI datasets:
+
+CACHE TABLE gold_hospital_kpis
+
+
+
+Data Quality Checks Before Gold Publish
+
+We added checks for:
+
+duplicate claim IDs
+null patient IDs
+invalid discharge dates
+negative billing amounts
+
+Only validated records moved to Gold.
+
+
+
+Business Impact
+
+After optimization:
+
+Dashboard refresh time improved from ~12 min → ~40 sec
+Cluster cost reduced
+Power BI performance improved

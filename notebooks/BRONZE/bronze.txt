@@ -1,0 +1,27 @@
+
+
+1. Connect to databricks connect so to use databricks cluster for testing rather than to test on local clusters.
+
+2. CI/CD handled by DevOps team.
+
+3. Connect VSCode to Gihub/Azure DevOps through CMD - access token.
+4. Connect Github/Azure DevOps to Databricks Repos through providing github username and personal access token.
+5. Create a repo in GitHub and start developing in VSCode.
+6. Github Flow - 
+        1. Write code in VSCode -> git checkout -b feature1 - > git add . -> git commit -m "" -> git push -u origin feature1 
+        2. Go to Github -> create a pull request -> Review Code -> Merge with main.
+        3. To avoid Merge Conflict pull from main in feature branch before pushing ur code so that any new changes is in your code already present.
+        4. Test your code in databricks clusters.
+        5. In databrics repos -> go to your repo/folder -> click on the main branch - > click on pull option -> code is present in your databricks notebook now.
+        6. First pull code in feature branch in databricks repos and test their using databricks cluster and optimizations, monitor then only push in Main branch.
+
+
+7. Connect ADF to databricks through Databricks notebook.
+
+8. Access ADLS in Databricks through Managed Identity, Storage Credential, Unity Catalog and Access connectors in Azure.
+9. Store secrets in key vault and databricks secret scope. list them through dbutils.
+
+10. Parameterize notebookk input using dbutils and provide parameters in Job during orchestration.
+11. Monitor through clicking on cluster attached to notebook -> SparkUI and Driver logs.
+
+
